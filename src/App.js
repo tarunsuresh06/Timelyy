@@ -14,10 +14,10 @@ function App() {
     <div>
       <Switch>
         <Route exact path="/login" component={Login} />
-        <ProtectedRoute exact path="/" component={Home} />
-        <ProtectedRoute exact path="/register" component={Register} />
-        <ProtectedRoute exact path="/attendance" component={Attendance} />
-        <ProtectedRoute exact path="/qrcode" component={CreateQRCode} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/attendance" component={Attendance} />
+        <Route exact path="/qrcode" component={CreateQRCode} />
         <Route exact path="/qrcode/scan" component={ScanQrCode} />
       </Switch>
     </div>
