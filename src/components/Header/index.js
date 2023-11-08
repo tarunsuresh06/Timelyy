@@ -70,7 +70,7 @@ const Header = (props) => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/jobs">
+        <Link className="nav-link" to="/qrcode/scan">
           <BsFillBriefcaseFill size={25} />
         </Link>
       </li>
