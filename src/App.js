@@ -3,7 +3,6 @@ import "./App.css";
 import Login from "./components/Login";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Attendance from "./components/Attendance";
 import CreateQRCode from "./components/Qr";
 import ScanQrCode from "./components/QrScanner";
