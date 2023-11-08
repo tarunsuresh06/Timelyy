@@ -18,7 +18,7 @@ function App() {
         <ProtectedRoute exact path="/register" component={Register} />
         <ProtectedRoute exact path="/attendance" component={Attendance} />
         <ProtectedRoute exact path="/qrcode" component={CreateQRCode} />
-        <ProtectedRoute exact path="/qrcode/scan" component={ScanQrCode} />
+        <Route exact path="/qrcode/scan" component={ScanQrCode} />
       </Switch>
     </div>
   );
