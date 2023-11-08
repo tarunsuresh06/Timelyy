@@ -50,7 +50,7 @@ const Header = (props) => {
         </li>
 
         <li className="nav-item">
-          <Link className="nav-link" to="/qrcode">
+          <Link className="nav-link" to="/qrcode/scan">
             QR Code
           </Link>
         </li>
