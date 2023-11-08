@@ -26,11 +26,11 @@ class Login extends Component {
   };
 
   onSubmitLogin = async (event) => {
-    const { email, password } = this.state;
+    const { email, password, formType } = this.state;
 
     event.preventDefault();
 
-    const userDetails = { email, password };
+    const userDetails = { email, password, formType };
 
     const url = "http://localhost:3000/login";
 
