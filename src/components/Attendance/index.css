@@ -1,0 +1,41 @@
+.attendance-bg-container {
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.profile-container {
+  background-color: #272727;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 40px 0;
+  width: 80%;
+  max-width: 700px;
+}
+
+.profile-container span {
+  margin: 14px 0;
+}
+
+.attendance-table {
+  width: 100%;
+  max-width: 700px;
+}
+
+.attendance-table th {
+  background-color: slategray;
+  padding: 20px 5px;
+  color: #000;
+}
+
+.attendance-table td {
+  background-color: aliceblue;
+  padding: 20px 5px;
+  color: #000;
+}

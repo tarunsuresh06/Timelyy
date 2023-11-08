@@ -1,0 +1,39 @@
+.register-bg-container {
+  min-height: 100vh;
+  background-color: #121212;
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #f8fafc;
+  padding: 20px;
+}
+
+.register-form {
+  background-color: #272727;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .register-form {
+    max-width: 500px;
+    padding: 50px;
+  }
+}
+
+.form-type-radio-input {
+  margin-right: 5px;
+}
+
+.form-type-text {
+  margin-right: 20px;
+}
