@@ -1,0 +1,33 @@
+.staff-dashboard-container {
+  background-color: #121212;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.generate-qr-btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #272727;
+  height: 100px;
+  width: 300px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generate-qr-btn:hover {
+  border: #fff solid 1px;
+  transform: scale(1.05);
+  transition: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.qr-text {
+  margin-left: 10px;
+  font-weight: 500;
+}

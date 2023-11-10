@@ -2,6 +2,7 @@ import { Link, withRouter } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { BsFillBriefcaseFill } from "react-icons/bs";
+import { BiQrScan } from "react-icons/bi";
 import Cookies from "js-cookie";
 
 import "./index.css";
@@ -70,8 +71,13 @@ const Header = (props) => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/qrcode/scan">
+        <Link className="nav-link" to="/attendance">
           <BsFillBriefcaseFill size={25} />
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/qrcode/scan">
+          <BiQrScan size={25} />
         </Link>
       </li>
       <li className="nav-item">

@@ -8,6 +8,7 @@ import CreateQRCode from "./components/Qr";
 import ScanQrCode from "./components/QrScanner";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import StaffDashboard from "./components/StaffDashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <ProtectedRoute exact path="/attendance" component={Attendance} />
         <ProtectedRoute exact path="/qrcode" component={CreateQRCode} />
         <ProtectedRoute exact path="/qrcode/scan" component={ScanQrCode} />
+        <ProtectedRoute exact path="/staff" component={StaffDashboard} />
       </Switch>
     </div>
   );

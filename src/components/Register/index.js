@@ -53,6 +53,62 @@ class Register extends Component {
     this.setState({ teacherDepartment: event.target.value });
   };
 
+  onSubmitTeacherForm = async (event) => {
+    const { teacherName, teacherEmployeeNo, teacherEmail, teacherDepartment } =
+      this.state;
+    event.preventDefault();
+
+    const url = `${process.env.REACT_APP_URL}profile/staff`;
+
+    const teacherDetails = {
+      teacherName,
+      teacherEmployeeNo,
+      teacherEmail,
+      teacherDepartment,
+    };
+
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(teacherDetails),
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    console.log(data);
+  };
+
+  onSubmitStudentForm = async (event) => {
+    const { studentName, studentRollNo, studentEmail, studentDepartment } =
+      this.state;
+    event.preventDefault();
+
+    const url = `${process.env.REACT_APP_URL}profile/student`;
+
+    const studentDetails = {
+      studentName,
+      studentRollNo,
+      studentEmail,
+      studentDepartment,
+    };
+
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(studentDetails),
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    console.log(data);
+  };
+
   render() {
     const {
       formType,
@@ -126,7 +182,7 @@ class Register extends Component {
     );
 
     const renderTeacherForm = () => (
-      <form className="register-form" onSubmit={this.onSubmitStudentForm}>
+      <form className="register-form" onSubmit={this.onSubmitTeacherForm}>
         <label className="form-label" htmlFor="teacherNameInput">
           TEACHER NAME
         </label>

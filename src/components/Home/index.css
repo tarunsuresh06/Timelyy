@@ -17,6 +17,18 @@
   height: 600px;
 }
 
+@media screen and (max-width: 768px) {
+  .home-list-group {
+    width: 100%;
+    padding: 20px;
+    height: auto;
+  }
+
+  .home-bg-container {
+    background-image: url("https://assets.ccbp.in/frontend/react-js/home-sm-bg.png");
+  }
+}
+
 .home-list-item {
   background-color: #272727;
   color: #fff;
@@ -40,7 +52,4 @@
 
 .home-list-text {
   margin-left: 10px;
-}
-
-@keyframes anime1 {
 }

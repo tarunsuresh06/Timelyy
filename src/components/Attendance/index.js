@@ -3,36 +3,28 @@ import { Component } from "react";
 import Header from "../Header";
 import Cookies from "js-cookie";
 
-const apiStatusConstants = {
-  initial: "INITIAL",
-  success: "SUCCESS",
-  failure: "FAILURE",
-  inProgress: "IN_PROGRESS",
-};
-
 class Attendance extends Component {
-  state = { userDetails: {}, apiStatus: apiStatusConstants.initial };
+  state = { userDetails: {} };
 
   componentDidMount() {
     this.getUserData();
   }
 
   getUserData = async () => {
-    const userEmail = Cookies.get("loginEmail");
+    const jwtToken = Cookies.get("jwt_token");
 
-    this.setState({ apiStatus: apiStatusConstants.inProgress });
-
-    const url = `http://localhost:3000/profile/${userEmail}`;
+    const url = `${process.env.REACT_APP_URL}profile/student`;
 
     const options = {
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${jwtToken}`,
       },
       method: "GET",
     };
     const response = await fetch(url, options);
     const data = await response.json();
-    const userData = data.user;
+    const userData = data.studentData;
     this.setState({ userDetails: userData });
   };
 
@@ -45,12 +37,9 @@ class Attendance extends Component {
         <Header />
         <div className="attendance-bg-container">
           <div className="profile-container">
-            <span>Student Name : {userDetails.NAME}</span>
-            <span>Roll No : {userDetails.ROLL_NO}</span>
-            <span>Department & Year : {userDetails.DEPARTMENT}</span>
-            <span>
-              From {userDetails.FROM_DATE} to {userDetails.TO_DATE}
-            </span>
+            <span>Student Name : {userDetails.student_name}</span>
+            <span>Roll No : {userDetails.roll_number}</span>
+            <span>Department : {userDetails.department}</span>
           </div>
 
           <table className="attendance-table">

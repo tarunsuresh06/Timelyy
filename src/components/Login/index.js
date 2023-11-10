@@ -10,7 +10,7 @@ class Login extends Component {
     password: "",
     errorMsg: "",
     showErrorMsg: false,
-    formType: "student",
+    userType: "student",
   };
 
   onSubmitFailure = (errMsg) => {
@@ -19,9 +19,7 @@ class Login extends Component {
 
   onSubmitSuccess = (jwtToken) => {
     const { history } = this.props;
-    const { email } = this.state;
     Cookies.set("jwt_token", jwtToken, { expires: 30 });
-    Cookies.set("loginEmail", email, { expires: 30 });
     history.replace("/");
   };
 
@@ -32,7 +30,7 @@ class Login extends Component {
 
     const userDetails = { email, password, formType };
 
-    const url = "http://localhost:3000/login";
+    const url = `${process.env.REACT_APP_URL}login`;
 
     const options = {
       headers: {
@@ -62,14 +60,14 @@ class Login extends Component {
     this.setState({ password: event.target.value });
   };
 
-  onChangeFormType = (event) => {
+  onChangeUserType = (event) => {
     const value = event.target.value;
 
-    this.setState({ formType: value });
+    this.setState({ userType: value });
   };
 
   render() {
-    const { email, password, errorMsg, showErrorMsg, formType } = this.state;
+    const { email, password, errorMsg, showErrorMsg, userType } = this.state;
 
     const token = Cookies.get("jwt_token");
 
@@ -116,8 +114,8 @@ class Login extends Component {
               type="radio"
               value="student"
               id="student"
-              checked={formType === "student"}
-              onChange={this.onChangeFormType}
+              checked={userType === "student"}
+              onChange={this.onChangeUserType}
               required
             />
             <label className="form-type-text" htmlFor="student">
@@ -128,8 +126,8 @@ class Login extends Component {
               type="radio"
               value="teacher"
               id="teacher"
-              checked={formType === "teacher"}
-              onChange={this.onChangeFormType}
+              checked={userType === "teacher"}
+              onChange={this.onChangeUserType}
               required
             />
             <label className="form-type-text" htmlFor="teacher">
