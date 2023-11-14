@@ -12,7 +12,7 @@ const ScanQrCode = () => {
         width: 200,
         height: 200,
       },
-      fps: 5,
+      fps: 30,
     });
 
     const success = (result) => {
