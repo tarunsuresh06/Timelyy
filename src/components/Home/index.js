@@ -6,7 +6,7 @@ import { BiRightArrowAlt, BiTimeFive, BiNotepad } from "react-icons/bi";
 
 import Header from "../Header";
 
-const Home = (props) => {
+const Home = () => {
   return (
     <>
       <Header />
@@ -61,7 +61,7 @@ const Home = (props) => {
             />
           </Link>
 
-          <Link to="/attend" className="home-list-item">
+          <Link to="/calender" className="home-list-item">
             <div>
               <BsFillCalendarCheckFill
                 className="home-icon"

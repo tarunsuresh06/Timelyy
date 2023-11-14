@@ -4,11 +4,12 @@ import Login from "./components/Login";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Attendance from "./components/Attendance";
-import CreateQRCode from "./components/Qr";
 import ScanQrCode from "./components/QrScanner";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import StaffDashboard from "./components/StaffDashboard";
+import Calender from "./components/Calender";
+import GenerateQrCode from "./components/GenerateQr";
 
 function App() {
   return (
@@ -18,9 +19,14 @@ function App() {
         <ProtectedRoute exact path="/" component={Home} />
         <ProtectedRoute exact path="/register" component={Register} />
         <ProtectedRoute exact path="/attendance" component={Attendance} />
-        <ProtectedRoute exact path="/qrcode" component={CreateQRCode} />
         <ProtectedRoute exact path="/qrcode/scan" component={ScanQrCode} />
         <ProtectedRoute exact path="/staff" component={StaffDashboard} />
+        <ProtectedRoute exact path="/calender" component={Calender} />
+        <ProtectedRoute
+          exact
+          path="/generate-qr-code"
+          component={GenerateQrCode}
+        />
       </Switch>
     </div>
   );

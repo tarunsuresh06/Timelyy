@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
+import { Redirect } from "react-router-dom";
 import { useEffect } from "react";
 
 const ScanQrCode = () => {
@@ -8,14 +9,15 @@ const ScanQrCode = () => {
   useEffect(() => {
     const scanner = new Html5QrcodeScanner("reader", {
       qrbox: {
-        width: 250,
-        height: 250,
+        width: 200,
+        height: 200,
       },
       fps: 5,
     });
 
     const success = (result) => {
       scanner.clear();
+      console.log(result);
       setScanResult(result);
     };
 
@@ -25,6 +27,10 @@ const ScanQrCode = () => {
 
     scanner.render(success, error);
   }, []);
+
+  if (localStorage.getItem("user_type") === "staff") {
+    return <Redirect to="/staff" />;
+  }
 
   return (
     <div className="Scan">

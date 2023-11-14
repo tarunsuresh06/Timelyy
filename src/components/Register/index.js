@@ -1,24 +1,98 @@
 import "./index.css";
 import { Component } from "react";
 import Header from "../Header";
+import { Redirect } from "react-router-dom";
+
+const departmentList = [
+  {
+    label: "Mechanical Engineering",
+    departmentId: "Mechanical",
+  },
+  {
+    label: "Automobile Engineering",
+    departmentId: "Automobile",
+  },
+  {
+    label: "Civil Engineering",
+    departmentId: "Civil",
+  },
+  {
+    label: "Computer Science and Engineering",
+    departmentId: "Computer Science",
+  },
+  {
+    label: "Electrical Engineering",
+    departmentId: "Electrical",
+  },
+  {
+    label: "Information Technology",
+    departmentId: "Information Technology",
+  },
+  {
+    label: "Electronics and Communication Engineering",
+    departmentId: "Electronics and Communication",
+  },
+  {
+    label: "Robotics and Automation Engineering",
+    departmentId: "Robotics and Automation",
+  },
+];
+
+const semesterList = [
+  {
+    label: "Semester 1",
+    semesterId: 1,
+  },
+  {
+    label: "Semester 2",
+    semesterId: 2,
+  },
+  {
+    label: "Semester 3",
+    semesterId: 3,
+  },
+  {
+    label: "Semester 4",
+    semesterId: 4,
+  },
+  {
+    label: "Semester 5",
+    semesterId: 5,
+  },
+  {
+    label: "Semester 6",
+    semesterId: 6,
+  },
+  {
+    label: "Semester 7",
+    semesterId: 7,
+  },
+  {
+    label: "Semester 8",
+    semesterId: 8,
+  },
+];
 
 class Register extends Component {
   state = {
-    formType: "student",
+    userType: "student",
     studentName: "",
     studentRollNo: "",
     studentEmail: "",
-    studentDepartment: "",
-    teacherName: "",
-    teacherEmployeeNo: "",
-    teacherEmail: "",
-    teacherDepartment: "",
+    semester: 1,
+    studentDepartment: "Mechanical",
+    studentPassword: "",
+    staffName: "",
+    staffEmployeeNo: "",
+    staffEmail: "",
+    staffDepartment: "Mechanical",
+    staffPassword: "",
   };
 
   onChangeFormType = (event) => {
     const value = event.target.value;
 
-    this.setState({ formType: value });
+    this.setState({ userType: value });
   };
 
   onChangeStudentName = (event) => {
@@ -33,38 +107,59 @@ class Register extends Component {
     this.setState({ studentEmail: event.target.value });
   };
 
+  onChangeStudentSemester = (event) => {
+    this.setState({ semester: event.target.value });
+  };
+
   onChangeStudentDepartment = (event) => {
     this.setState({ studentDepartment: event.target.value });
   };
 
-  onChangeTeacherName = (event) => {
+  onChangeStudentPassword = (event) => {
+    this.setState({ studentPassword: event.target.value });
+  };
+
+  onChangeStaffName = (event) => {
     this.setState({ teacherName: event.target.value });
   };
 
-  onChangeTeacherEmployeeNumber = (event) => {
+  onChangeStaffEmployeeNumber = (event) => {
     this.setState({ teacherEmployeeNo: event.target.value });
   };
 
-  onChangeTeacherEmail = (event) => {
+  onChangeStaffEmail = (event) => {
     this.setState({ teacherEmail: event.target.value });
   };
 
-  onChangeTeacherDepartment = (event) => {
+  onChangeStaffDepartment = (event) => {
     this.setState({ teacherDepartment: event.target.value });
   };
 
-  onSubmitTeacherForm = async (event) => {
-    const { teacherName, teacherEmployeeNo, teacherEmail, teacherDepartment } =
-      this.state;
+  onChangeStaffPassword = (event) => {
+    this.setState({ teacherPassword: event.target.value });
+  };
+
+  onSubmitStaffForm = async (event) => {
+    const {
+      staffName,
+      staffEmployeeNo,
+      staffEmail,
+      staffDepartment,
+      staffPassword,
+      userType,
+    } = this.state;
+
     event.preventDefault();
 
-    const url = `${process.env.REACT_APP_URL}profile/staff`;
+    const url = `${process.env.REACT_APP_URL}register`;
 
-    const teacherDetails = {
-      teacherName,
-      teacherEmployeeNo,
-      teacherEmail,
-      teacherDepartment,
+    const staffDetails = {
+      name: staffName,
+      unique_no: staffEmployeeNo,
+      email: staffEmail,
+      department: staffDepartment,
+      password: staffPassword,
+      user_type: userType,
     };
 
     const options = {
@@ -72,7 +167,7 @@ class Register extends Component {
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: JSON.stringify(teacherDetails),
+      body: JSON.stringify(staffDetails),
     };
 
     const response = await fetch(url, options);
@@ -82,17 +177,27 @@ class Register extends Component {
   };
 
   onSubmitStudentForm = async (event) => {
-    const { studentName, studentRollNo, studentEmail, studentDepartment } =
-      this.state;
-    event.preventDefault();
-
-    const url = `${process.env.REACT_APP_URL}profile/student`;
-
-    const studentDetails = {
+    const {
       studentName,
       studentRollNo,
       studentEmail,
       studentDepartment,
+      studentPassword,
+      semester,
+      userType,
+    } = this.state;
+    event.preventDefault();
+
+    const url = `${process.env.REACT_APP_URL}register`;
+
+    const studentDetails = {
+      name: studentName,
+      unique_no: studentRollNo,
+      email: studentEmail,
+      department: studentDepartment,
+      semester: semester,
+      password: studentPassword,
+      user_type: userType,
     };
 
     const options = {
@@ -111,15 +216,15 @@ class Register extends Component {
 
   render() {
     const {
-      formType,
+      userType,
       studentName,
       studentRollNo,
       studentEmail,
-      studentDepartment,
-      teacherName,
-      teacherEmployeeNo,
-      teacherEmail,
-      teacherDepartment,
+      studentPassword,
+      staffName,
+      staffEmployeeNo,
+      staffEmail,
+      staffPassword,
     } = this.state;
 
     const renderStudentForm = () => (
@@ -156,89 +261,152 @@ class Register extends Component {
         <input
           id="studentEmailInput"
           className="form-input"
-          type="text"
+          type="email"
           value={studentEmail}
           placeholder="Student Email"
           onChange={this.onChangeStudentEmail}
           required
         />
 
+        <label className="form-label" htmlFor="studentSemesterInput">
+          SEMESTER
+        </label>
+
+        <select
+          id="studentSemesterInput"
+          className="form-input"
+          onChange={this.onChangeStudentSemester}
+        >
+          {semesterList.map((semester) => {
+            return (
+              <option key={semester.semesterId} value={semester.semesterId}>
+                {semester.label}
+              </option>
+            );
+          })}
+        </select>
+
         <label className="form-label" htmlFor="studentDepartmentInput">
           STUDENT DEPARTMENT
         </label>
-        <input
+
+        <select
           id="studentDepartmentInput"
           className="form-input"
-          type="text"
-          value={studentDepartment}
-          placeholder="Student Department"
           onChange={this.onChangeStudentDepartment}
+        >
+          {departmentList.map((department) => {
+            return (
+              <option
+                key={department.departmentId}
+                value={department.departmentId}
+              >
+                {department.label}
+              </option>
+            );
+          })}
+        </select>
+
+        <label className="form-label" htmlFor="studentPasswordInput">
+          STUDENT PASSWORD
+        </label>
+
+        <input
+          id="studentPasswordInput"
+          className="form-input"
+          type="text"
+          value={studentPassword}
+          placeholder="Student Password"
+          onChange={this.onChangeStudentPassword}
           required
         />
+
         <button className="login-btn" type="submit">
           Add Student
         </button>
       </form>
     );
 
-    const renderTeacherForm = () => (
-      <form className="register-form" onSubmit={this.onSubmitTeacherForm}>
-        <label className="form-label" htmlFor="teacherNameInput">
-          TEACHER NAME
+    const renderStaffForm = () => (
+      <form className="register-form" onSubmit={this.onSubmitStaffForm}>
+        <label className="form-label" htmlFor="staffNameInput">
+          STAFF NAME
         </label>
         <input
-          id="teacherNameInput"
+          id="staffNameInput"
           className="form-input"
           type="text"
-          value={teacherName}
-          placeholder="Teacher Name"
-          onChange={this.onChangeTeacherName}
+          value={staffName}
+          placeholder="Staff Name"
+          onChange={this.onChangeStaffName}
           required
         />
 
-        <label className="form-label" htmlFor="teacherEmployeeNumberInput">
+        <label className="form-label" htmlFor="staffEmployeeNumberInput">
           EMPLOYEE NO
         </label>
         <input
-          id="teacherEmployeeNumberInput"
+          id="staffEmployeeNumberInput"
           className="form-input"
           type="text"
-          value={teacherEmployeeNo}
+          value={staffEmployeeNo}
           placeholder="Employee Number"
-          onChange={this.onChangeTeacherEmployeeNumber}
+          onChange={this.onChangeStaffEmployeeNumber}
           required
         />
 
         <label className="form-label" htmlFor="teacherEmailInput">
-          TEACHER EMAIL
+          STAFF EMAIL
         </label>
         <input
-          id="teacherEmailInput"
+          id="staffEmailInput"
           className="form-input"
           type="text"
-          value={teacherEmail}
-          placeholder="Teacher Email"
-          onChange={this.onChangeTeacherEmail}
+          value={staffEmail}
+          placeholder="Staff Email"
+          onChange={this.onChangeStaffEmail}
           required
         />
 
-        <label className="form-label" htmlFor="teacherDepartmentInput">
-          TEACHER DEPARTMENT
+        <label className="form-label" htmlFor="staffDepartmentInput">
+          STAFF DEPARTMENT
         </label>
+        <select id="staffDepartmentInput" className="form-input">
+          {departmentList.map((department) => {
+            return (
+              <option
+                key={department.departmentId}
+                value={department.departmentId}
+                onChange={this.onChangeStaffDepartment}
+              >
+                {department.label}
+              </option>
+            );
+          })}
+        </select>
+
+        <label className="form-label" htmlFor="staffPasswordInput">
+          STAFF PASSWORD
+        </label>
+
         <input
-          id="teacherDepartmentInput"
+          id="staffPasswordInput"
           className="form-input"
           type="text"
-          value={teacherDepartment}
-          placeholder="Teacher Department"
-          onChange={this.onChangeTeacherDepartment}
+          value={staffPassword}
+          placeholder="Staff Password"
+          onChange={this.onChangeStaffPassword}
           required
         />
         <button className="login-btn" type="submit">
-          Add Teacher
+          Add Staff
         </button>
       </form>
     );
+
+    if (localStorage.getItem("user_type") === "student") {
+      return <Redirect to="/" />;
+    }
 
     return (
       <>
@@ -250,29 +418,29 @@ class Register extends Component {
               type="radio"
               value="student"
               id="student"
-              checked={formType === "student"}
+              checked={userType === "student"}
               onChange={this.onChangeFormType}
               required
             />
             <label className="form-type-text" htmlFor="student">
-              Student
+              STUDENT
             </label>
             <input
               className="form-type-radio-input"
               type="radio"
-              value="teacher"
-              id="teacher"
-              checked={formType === "teacher"}
+              value="staff"
+              id="staff"
+              checked={userType === "staff"}
               onChange={this.onChangeFormType}
               required
             />
-            <label className="form-type-text" htmlFor="teacher">
-              Teacher
+            <label className="form-type-text" htmlFor="staff">
+              STAFF
             </label>
           </div>
 
-          {formType === "student" && renderStudentForm()}
-          {formType === "teacher" && renderTeacherForm()}
+          {userType === "student" && renderStudentForm()}
+          {userType === "staff" && renderStaffForm()}
         </div>
       </>
     );

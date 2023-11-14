@@ -12,7 +12,7 @@ const Header = (props) => {
     const { history } = props;
 
     Cookies.remove("jwt_token");
-    Cookies.remove("loginEmail");
+    localStorage.removeItem("user_type");
 
     history.replace("/login");
   };
@@ -45,7 +45,7 @@ const Header = (props) => {
         </li>
 
         <li className="nav-item">
-          <Link className="nav-link" to="/time-table">
+          <Link className="nav-link" to="/calender">
             Calender
           </Link>
         </li>

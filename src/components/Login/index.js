@@ -18,9 +18,15 @@ class Login extends Component {
   };
 
   onSubmitSuccess = (jwtToken) => {
+    const { userType } = this.state;
     const { history } = this.props;
     Cookies.set("jwt_token", jwtToken, { expires: 30 });
-    history.replace("/");
+    localStorage.setItem("user_type", userType);
+    if (userType === "student") {
+      history.replace("/");
+    } else {
+      history.replace("/staff");
+    }
   };
 
   onSubmitLogin = async (event) => {

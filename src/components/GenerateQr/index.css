@@ -1,0 +1,51 @@
+.generate-qr-container {
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.qr-code-container {
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.qr-wraper {
+  background-color: #272727;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.generate-qr-form {
+  background-color: #272727;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 30px;
+}
+
+.qr-code-container button {
+  align-self: auto;
+  padding: 10px 16px;
+  margin-top: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .generate-qr-form {
+    max-width: 500px;
+    padding: 50px;
+  }
+}

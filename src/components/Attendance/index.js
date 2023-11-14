@@ -1,16 +1,27 @@
 import "./index.css";
 import { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Header from "../Header";
 import Cookies from "js-cookie";
+import { ThreeDots } from "react-loader-spinner";
+
+const apiStatusConstants = {
+  initial: "INITIAL",
+  success: "SUCCESS",
+  failure: "FAILURE",
+  inProgress: "IN_PROGRESS",
+};
 
 class Attendance extends Component {
-  state = { userDetails: {} };
+  state = { userDetails: {}, apiStatus: apiStatusConstants.initial };
 
   componentDidMount() {
     this.getUserData();
   }
 
   getUserData = async () => {
+    this.setState({ apiStatus: apiStatusConstants.inProgress });
+
     const jwtToken = Cookies.get("jwt_token");
 
     const url = `${process.env.REACT_APP_URL}profile/student`;
@@ -23,25 +34,50 @@ class Attendance extends Component {
       method: "GET",
     };
     const response = await fetch(url, options);
-    const data = await response.json();
-    const userData = data.studentData;
-    this.setState({ userDetails: userData });
+    if (response.ok === true) {
+      const data = await response.json();
+      const userData = data.studentData;
+      this.setState({
+        userDetails: userData,
+        apiStatus: apiStatusConstants.success,
+      });
+    } else {
+      this.setState({ apiStatus: apiStatusConstants.failure });
+    }
   };
 
   render() {
-    const { userDetails } = this.state;
-    console.log(userDetails);
+    const { userDetails, apiStatus } = this.state;
+
+    const showLoader = apiStatus === apiStatusConstants.inProgress;
+
+    const renderProfileView = () => {
+      return (
+        <div className="profile-container">
+          <span>Student Name : {userDetails.student_name}</span>
+          <span>Roll No : {userDetails.roll_number}</span>
+          <span>Department : {userDetails.department}</span>
+        </div>
+      );
+    };
+
+    const renderLoaderView = () => {
+      return (
+        <div className="loader-container">
+          <ThreeDots height="80" width="80" radius="9" color="#fff" />
+        </div>
+      );
+    };
+
+    if (localStorage.getItem("user_type") === "staff") {
+      return <Redirect to="/staff" />;
+    }
 
     return (
       <>
         <Header />
         <div className="attendance-bg-container">
-          <div className="profile-container">
-            <span>Student Name : {userDetails.student_name}</span>
-            <span>Roll No : {userDetails.roll_number}</span>
-            <span>Department : {userDetails.department}</span>
-          </div>
-
+          {showLoader ? renderLoaderView() : renderProfileView()}
           <table className="attendance-table">
             <thead>
               <tr>

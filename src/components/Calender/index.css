@@ -1,0 +1,13 @@
+.calender-bg-container {
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.calender-image {
+  width: 500px;
+}
