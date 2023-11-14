@@ -7,8 +7,6 @@ import Cookies from "js-cookie";
 const ScanQrCode = () => {
   const [scanResult, setScanResult] = useState(null);
 
-  const [errMsg, setErrMsg] = useState("");
-
   useEffect(() => {
     const scanner = new Html5QrcodeScanner("reader", {
       qrbox: {
@@ -62,7 +60,6 @@ const ScanQrCode = () => {
         setScanResult("Attendance Added Successfully LastID: " + data.lastID);
       } else {
         const data = await response.json();
-        setErrMsg({ errMsg: data.err_msg });
         setScanResult(data.err_msg);
       }
     };
