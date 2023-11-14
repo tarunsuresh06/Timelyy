@@ -283,7 +283,8 @@ class GenerateQrCode extends Component {
     };
 
     const renderQrCode = () => {
-      let value = `${attendanceData.time_stamp}-${attendanceData.subject_code}-${attendanceData.subject_name}-${attendanceData.staff_id}-${attendanceData.staff_name}-${attendanceData.department}`;
+      // Value Format Time_Stamp - Sub_Code - Sub_Name - Staff_Id - Staff_Name - Department - hours_taken
+      let value = `${attendanceData.time_stamp}-${attendanceData.subject_code}-${attendanceData.subject_name}-${attendanceData.staff_id}-${attendanceData.staff_name}-${attendanceData.department}-${attendanceData.taken_hours}-${attendanceData.semester}`;
 
       return (
         <div className="qr-code-container">
