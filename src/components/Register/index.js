@@ -120,23 +120,23 @@ class Register extends Component {
   };
 
   onChangeStaffName = (event) => {
-    this.setState({ teacherName: event.target.value });
+    this.setState({ staffName: event.target.value });
   };
 
   onChangeStaffEmployeeNumber = (event) => {
-    this.setState({ teacherEmployeeNo: event.target.value });
+    this.setState({ staffEmployeeNo: event.target.value });
   };
 
   onChangeStaffEmail = (event) => {
-    this.setState({ teacherEmail: event.target.value });
+    this.setState({ staffEmail: event.target.value });
   };
 
   onChangeStaffDepartment = (event) => {
-    this.setState({ teacherDepartment: event.target.value });
+    this.setState({ staffDepartment: event.target.value });
   };
 
   onChangeStaffPassword = (event) => {
-    this.setState({ teacherPassword: event.target.value });
+    this.setState({ staffPassword: event.target.value });
   };
 
   onSubmitStaffForm = async (event) => {
