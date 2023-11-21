@@ -21,20 +21,16 @@ class Login extends Component {
     const { userType } = this.state;
     const { history } = this.props;
     Cookies.set("jwt_token", jwtToken, { expires: 30 });
+    history.replace("/");
     localStorage.setItem("user_type", userType);
-    if (userType === "student") {
-      history.replace("/");
-    } else {
-      history.replace("/staff");
-    }
   };
 
   onSubmitLogin = async (event) => {
-    const { email, password, formType } = this.state;
+    const { email, password, userType } = this.state;
 
     event.preventDefault();
 
-    const userDetails = { email, password, formType };
+    const userDetails = { email, password, userType };
 
     const url = `${process.env.REACT_APP_URL}login`;
 
@@ -130,14 +126,14 @@ class Login extends Component {
             <input
               className="form-type-radio-input"
               type="radio"
-              value="teacher"
-              id="teacher"
-              checked={userType === "teacher"}
+              value="staff"
+              id="staff"
+              checked={userType === "staff"}
               onChange={this.onChangeUserType}
               required
             />
-            <label className="form-type-text" htmlFor="teacher">
-              Teacher
+            <label className="form-type-text" htmlFor="staff">
+              Staff
             </label>
           </div>
 

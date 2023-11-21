@@ -84,7 +84,42 @@ class Attendance extends Component {
           <span>Student Name : {userDetails.student_name}</span>
           <span>Roll No : {userDetails.roll_number}</span>
           <span>Department : {userDetails.department}</span>
+          <span>Semester : {userDetails.semester}</span>
         </div>
+      );
+    };
+
+    const renderAttendanceTable = () => {
+      return (
+        <table className="attendance-table">
+          <thead>
+            <tr>
+              <th>Subject Name</th>
+              <th>Subject Code</th>
+              <th>Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {attendanceList.map((subject) => {
+              var percentage;
+              if (subject.student_hours === 0) {
+                percentage = 0;
+              } else {
+                percentage = Math.round(
+                  (subject.student_hours / subject.staff_hours) * 100
+                );
+              }
+
+              return (
+                <tr key={subject.subject_id}>
+                  <td className="subject-name">{subject.subject_name}</td>
+                  <td>{subject.subject_code}</td>
+                  <td>{percentage}%</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       );
     };
 
@@ -100,40 +135,18 @@ class Attendance extends Component {
       return <Redirect to="/staff" />;
     }
 
+    const showAttendance = attendanceList.length > 0;
+
     return (
       <>
         <Header />
         <div className="attendance-bg-container">
           {showLoader ? renderLoaderView() : renderProfileView()}
-          <table className="attendance-table">
-            <thead>
-              <tr>
-                <th>Subject Name</th>
-                <th>Subject Code</th>
-                <th>Percentage</th>
-              </tr>
-            </thead>
-            <tbody>
-              {attendanceList.map((subject) => {
-                var percentage;
-                if (subject.student_hours === 0) {
-                  percentage = 0;
-                } else {
-                  percentage = Math.round(
-                    (subject.student_hours / subject.staff_hours) * 100
-                  );
-                }
-
-                return (
-                  <tr key={subject.subject_id}>
-                    <td>{subject.subject_name}</td>
-                    <td>{subject.subject_code}</td>
-                    <td>{percentage}%</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          {showAttendance ? (
+            renderAttendanceTable()
+          ) : (
+            <span>No Data Found</span>
+          )}
         </div>
       </>
     );

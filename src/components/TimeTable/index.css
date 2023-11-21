@@ -1,4 +1,4 @@
-.calender-bg-container {
+.time-table-bg-container {
   background-color: #121212;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   color: #fff;
 }
 
-.calender-image {
-  min-width: 400px;
-  width: 25%;
+.time-table-image {
+  width: 80%;
+  max-width: 900px;
 }

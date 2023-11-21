@@ -1,0 +1,22 @@
+.pdf-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 1500px;
+}
+
+.pdf-container {
+  background-color: #272727;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  min-width: 280px;
+  max-width: 330px;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .pdf-list {
+    justify-content: center;
+  }
+}
