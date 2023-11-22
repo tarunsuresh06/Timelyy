@@ -1,8 +1,6 @@
 import { Link, withRouter } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
-import { BsFillBriefcaseFill } from "react-icons/bs";
-import { BiQrScan } from "react-icons/bi";
 import Cookies from "js-cookie";
 
 import "./index.css";
@@ -13,9 +11,35 @@ const Header = (props) => {
 
     Cookies.remove("jwt_token");
     localStorage.removeItem("user_type");
+    localStorage.removeItem("is_admin");
 
     history.replace("/login");
   };
+
+  const renderStaffItems = () => (
+    <li className="nav-item">
+      <Link className="nav-link" to="/generate-qr-code">
+        Generate QR
+      </Link>
+    </li>
+  );
+
+  const renderStudentItems = () => (
+    <>
+      <li className="nav-item">
+        <Link className="nav-link" to="/attendance">
+          Attendance
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/qrcode/scan">
+          QR Code
+        </Link>
+      </li>
+    </>
+  );
+
+  const showStaff = localStorage.getItem("user_type") === "staff";
 
   const renderDesktopView = () => (
     <>
@@ -26,11 +50,7 @@ const Header = (props) => {
           </Link>
         </li>
 
-        <li className="nav-item">
-          <Link className="nav-link" to="/attendance">
-            Attendance
-          </Link>
-        </li>
+        {showStaff ? renderStaffItems() : renderStudentItems()}
 
         <li className="nav-item">
           <Link className="nav-link" to="/notes">
@@ -49,12 +69,6 @@ const Header = (props) => {
             Calender
           </Link>
         </li>
-
-        <li className="nav-item">
-          <Link className="nav-link" to="/qrcode/scan">
-            QR Code
-          </Link>
-        </li>
       </ul>
 
       <button className="logout-btn" type="button" onClick={onClickLogout}>
@@ -68,16 +82,6 @@ const Header = (props) => {
       <li className="nav-item">
         <Link className="nav-link" to="/">
           <AiFillHome size={25} />
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/attendance">
-          <BsFillBriefcaseFill size={25} />
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/qrcode/scan">
-          <BiQrScan size={25} />
         </Link>
       </li>
       <li className="nav-item">

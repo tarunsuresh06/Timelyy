@@ -5,7 +5,12 @@ import {
   BsCardChecklist,
   BsFillCalendarCheckFill,
 } from "react-icons/bs";
-import { BiRightArrowAlt, BiTimeFive, BiNotepad } from "react-icons/bi";
+import {
+  BiQrScan,
+  BiRightArrowAlt,
+  BiTimeFive,
+  BiNotepad,
+} from "react-icons/bi";
 
 import Header from "../Header";
 
@@ -29,22 +34,40 @@ const Home = () => {
 
   const renderStudentListItem = () => {
     return (
-      <Link to="/attendance" className="home-list-item">
-        <div>
-          <BsCardChecklist
+      <>
+        <Link to="/attendance" className="home-list-item">
+          <div>
+            <BsCardChecklist
+              className="home-icon"
+              size={20}
+              style={{ color: "fff" }}
+            />
+            <span className="home-list-text">Attendance Tracker</span>
+          </div>
+
+          <BiRightArrowAlt
             className="home-icon"
             size={20}
             style={{ color: "fff" }}
           />
-          <span className="home-list-text">Attendance Tracker</span>
-        </div>
+        </Link>
+        <Link to="/qrcode/scan" className="home-list-item">
+          <div>
+            <BiQrScan
+              className="home-icon"
+              size={20}
+              style={{ color: "fff" }}
+            />
+            <span className="home-list-text">QR Code Scanner</span>
+          </div>
 
-        <BiRightArrowAlt
-          className="home-icon"
-          size={20}
-          style={{ color: "fff" }}
-        />
-      </Link>
+          <BiRightArrowAlt
+            className="home-icon"
+            size={20}
+            style={{ color: "fff" }}
+          />
+        </Link>
+      </>
     );
   };
 
@@ -55,10 +78,10 @@ const Home = () => {
     <>
       <Header />
       <div className="home-bg-container">
+        <h1 className="title">Welcome To Timelyy</h1>
         <div className="home-list-group">
           {showStaffOption && renderStaffListItem()}
           {showStudentOption && renderStudentListItem()}
-
           <Link to="/notes" className="home-list-item">
             <div>
               <BiNotepad

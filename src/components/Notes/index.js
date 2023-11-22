@@ -4,6 +4,7 @@ import "./index.css";
 import Header from "../Header";
 import Cookies from "js-cookie";
 import PdfList from "../PdfList";
+import { v4 } from "uuid";
 
 const departmentList = [
   {
@@ -61,6 +62,7 @@ const PdfUpload = () => {
       }
 
       const formData = new FormData();
+      formData.append("id", v4());
       formData.append("pdf", file);
       formData.append("name", name);
       formData.append("department", department);

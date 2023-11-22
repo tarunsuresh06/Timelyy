@@ -3,6 +3,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import { Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+import "./index.css";
 
 const ScanQrCode = () => {
   const [scanResult, setScanResult] = useState(null);

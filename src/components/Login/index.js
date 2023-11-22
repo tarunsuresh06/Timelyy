@@ -18,11 +18,17 @@ class Login extends Component {
   };
 
   onSubmitSuccess = (jwtToken) => {
-    const { userType } = this.state;
+    const { userType, email } = this.state;
     const { history } = this.props;
     Cookies.set("jwt_token", jwtToken, { expires: 30 });
-    history.replace("/");
     localStorage.setItem("user_type", userType);
+    if (email === "admin@timelyy.com") {
+      localStorage.setItem("is_admin", true);
+      history.replace("/admin");
+    } else {
+      localStorage.setItem("is_admin", false);
+      history.replace("/");
+    }
   };
 
   onSubmitLogin = async (event) => {

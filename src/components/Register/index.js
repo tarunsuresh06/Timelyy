@@ -1,6 +1,5 @@
 import "./index.css";
 import { Component } from "react";
-import Header from "../Header";
 import { Redirect } from "react-router-dom";
 
 const departmentList = [
@@ -171,9 +170,12 @@ class Register extends Component {
     };
 
     const response = await fetch(url, options);
-    const data = await response.json();
+    if (response.ok) {
+      const data = await response.json();
 
-    console.log(data);
+      console.log(data);
+      alert("Success");
+    }
   };
 
   onSubmitStudentForm = async (event) => {
@@ -209,9 +211,12 @@ class Register extends Component {
     };
 
     const response = await fetch(url, options);
-    const data = await response.json();
+    if (response.ok) {
+      const data = await response.json();
 
-    console.log(data);
+      console.log(data);
+      alert("Success");
+    }
   };
 
   render() {
@@ -404,45 +409,42 @@ class Register extends Component {
       </form>
     );
 
-    if (localStorage.getItem("user_type") === "student") {
+    if (!localStorage.getItem("is_admin")) {
       return <Redirect to="/" />;
     }
 
     return (
-      <>
-        <Header />
-        <div className="register-bg-container">
-          <div>
-            <input
-              className="form-type-radio-input"
-              type="radio"
-              value="student"
-              id="student"
-              checked={userType === "student"}
-              onChange={this.onChangeFormType}
-              required
-            />
-            <label className="form-type-text" htmlFor="student">
-              STUDENT
-            </label>
-            <input
-              className="form-type-radio-input"
-              type="radio"
-              value="staff"
-              id="staff"
-              checked={userType === "staff"}
-              onChange={this.onChangeFormType}
-              required
-            />
-            <label className="form-type-text" htmlFor="staff">
-              STAFF
-            </label>
-          </div>
-
-          {userType === "student" && renderStudentForm()}
-          {userType === "staff" && renderStaffForm()}
+      <div className="register-bg-container">
+        <div>
+          <input
+            className="form-type-radio-input"
+            type="radio"
+            value="student"
+            id="student"
+            checked={userType === "student"}
+            onChange={this.onChangeFormType}
+            required
+          />
+          <label className="form-type-text" htmlFor="student">
+            STUDENT
+          </label>
+          <input
+            className="form-type-radio-input"
+            type="radio"
+            value="staff"
+            id="staff"
+            checked={userType === "staff"}
+            onChange={this.onChangeFormType}
+            required
+          />
+          <label className="form-type-text" htmlFor="staff">
+            STAFF
+          </label>
         </div>
-      </>
+
+        {userType === "student" && renderStudentForm()}
+        {userType === "staff" && renderStaffForm()}
+      </div>
     );
   }
 }

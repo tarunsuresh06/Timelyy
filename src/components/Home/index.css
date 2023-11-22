@@ -8,6 +8,14 @@
   min-height: 100vh;
 }
 
+.title {
+  font-size: 52px;
+  color: #fff;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .home-list-group {
   display: flex;
   flex-direction: column;
@@ -22,6 +30,10 @@
     width: 100%;
     padding: 20px;
     height: auto;
+  }
+
+  .title {
+    font-size: 36px;
   }
 
   .home-bg-container {

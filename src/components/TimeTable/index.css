@@ -12,3 +12,13 @@
   width: 80%;
   max-width: 900px;
 }
+
+.time-table-container {
+  background-color: #272727;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  min-width: 400px;
+  text-align: center;
+  padding: 20px 0;
+}

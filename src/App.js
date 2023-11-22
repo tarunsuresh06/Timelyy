@@ -7,7 +7,7 @@ import Attendance from "./components/Attendance";
 import ScanQrCode from "./components/QrScanner";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
-import StaffDashboard from "./components/StaffDashboard";
+import AdminDashboard from "./components/AdminDashboard";
 import Calender from "./components/Calender";
 import GenerateQrCode from "./components/GenerateQr";
 import notFound from "./components/NotFound";
@@ -23,7 +23,7 @@ function App() {
         <ProtectedRoute exact path="/register" component={Register} />
         <ProtectedRoute exact path="/attendance" component={Attendance} />
         <ProtectedRoute exact path="/qrcode/scan" component={ScanQrCode} />
-        <ProtectedRoute exact path="/staff" component={StaffDashboard} />
+        <ProtectedRoute exact path="/admin" component={AdminDashboard} />
         <ProtectedRoute exact path="/calender" component={Calender} />
         <ProtectedRoute exact path="/time-table" component={TimeTable} />
         <ProtectedRoute exact path="/notes" component={PdfUpload} />

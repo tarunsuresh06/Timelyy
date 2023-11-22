@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./index.css";
+import PdfItem from "../PdfItem";
 
 const PdfList = () => {
   const [pdfs, setPdfs] = useState([]);
@@ -40,16 +41,24 @@ const PdfList = () => {
     }
   };
 
+  const deletePdf = async (id) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_URL}delete-pdf/${id}`);
+      alert("PDF deleted from database");
+    } catch (error) {
+      console.error("Error Deleting PDFs:", error);
+    }
+  };
+
   return (
     <div className="pdf-list">
       {pdfs.map((pdf, index) => (
-        <div key={index} className="pdf-container">
-          <p>Name: {pdf.name}</p>
-          <p>Department: {pdf.department}</p>
-          <button onClick={() => viewPdf(pdf.data)} className="login-btn">
-            View PDF
-          </button>
-        </div>
+        <PdfItem
+          key={index}
+          pdf={pdf}
+          viewPdf={viewPdf}
+          deletePdf={deletePdf}
+        />
       ))}
     </div>
   );
