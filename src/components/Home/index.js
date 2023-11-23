@@ -5,12 +5,7 @@ import {
   BsCardChecklist,
   BsFillCalendarCheckFill,
 } from "react-icons/bs";
-import {
-  BiQrScan,
-  BiRightArrowAlt,
-  BiTimeFive,
-  BiNotepad,
-} from "react-icons/bi";
+import { BiQrScan, BiRightArrowAlt, BiTimeFive } from "react-icons/bi";
 
 import Header from "../Header";
 

@@ -18,7 +18,7 @@
   padding: 15px;
   margin: 10px;
   border-radius: 10px;
-  min-width: 400px;
+  width: 400px;
   text-align: center;
   padding: 20px 0;
 }
@@ -40,4 +40,14 @@
 }
 .notes-form-container h2 {
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .notes-form-container {
+    width: 300px;
+  }
+
+  .time-table-container {
+    width: 300px;
+  }
 }
