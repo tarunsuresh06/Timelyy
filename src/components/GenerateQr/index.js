@@ -3,6 +3,7 @@ import "./index.css";
 import { Component } from "react";
 import { Redirect } from "react-router-dom";
 import QRCode from "react-qr-code";
+import Header from "../Header";
 
 const departmentList = [
   {
@@ -195,90 +196,96 @@ class GenerateQrCode extends Component {
 
     const renderQrForm = () => {
       return (
-        <div className="generate-qr-container">
-          <h1>Generate QR Code</h1>
-          <form
-            className="generate-qr-form"
-            onSubmit={this.onSubmitGenerateQrForm}
-          >
-            <label className="form-label" htmlFor="departmentInput">
-              DEPARTMENT
-            </label>
-
-            <select
-              id="departmentInput"
-              className="form-input"
-              onChange={this.onChangeDepartment}
+        <>
+          <Header />
+          <div className="generate-qr-container">
+            <h1>Generate QR Code</h1>
+            <form
+              className="generate-qr-form"
+              onSubmit={this.onSubmitGenerateQrForm}
             >
-              {departmentList.map((department) => {
-                return (
-                  <option
-                    key={department.departmentId}
-                    value={department.departmentId}
-                  >
-                    {department.label}
-                  </option>
-                );
-              })}
-            </select>
+              <label className="form-label" htmlFor="departmentInput">
+                DEPARTMENT
+              </label>
 
-            <label className="form-label" htmlFor="semesterInput">
-              SEMESTER
-            </label>
+              <select
+                id="departmentInput"
+                className="form-input"
+                onChange={this.onChangeDepartment}
+              >
+                {departmentList.map((department) => {
+                  return (
+                    <option
+                      key={department.departmentId}
+                      value={department.departmentId}
+                    >
+                      {department.label}
+                    </option>
+                  );
+                })}
+              </select>
 
-            <select
-              id="semesterInput"
-              className="form-input"
-              onChange={this.onChangeSemester}
-            >
-              {semesterList.map((semester) => {
-                return (
-                  <option key={semester.semesterId} value={semester.semesterId}>
-                    {semester.label}
-                  </option>
-                );
-              })}
-            </select>
+              <label className="form-label" htmlFor="semesterInput">
+                SEMESTER
+              </label>
 
-            <label className="form-label" htmlFor="subjectInput">
-              SUBJECT
-            </label>
+              <select
+                id="semesterInput"
+                className="form-input"
+                onChange={this.onChangeSemester}
+              >
+                {semesterList.map((semester) => {
+                  return (
+                    <option
+                      key={semester.semesterId}
+                      value={semester.semesterId}
+                    >
+                      {semester.label}
+                    </option>
+                  );
+                })}
+              </select>
 
-            <select
-              id="subjectInput"
-              className="form-input"
-              onChange={this.onChangeSubject}
-            >
-              {subjectList.map((subject) => {
-                return (
-                  <option
-                    key={subject.subject_code}
-                    value={subject.subject_code}
-                  >
-                    {subject.subject_name}
-                  </option>
-                );
-              })}
-            </select>
+              <label className="form-label" htmlFor="subjectInput">
+                SUBJECT
+              </label>
 
-            <label className="form-label" htmlFor="hoursTakenInput">
-              TOTAL HOUR
-            </label>
-            <input
-              id="hoursTakenInput"
-              className="form-input"
-              type="number"
-              value={hoursTaken}
-              placeholder="Total hour"
-              onChange={this.onChangeHoursTaken}
-              required
-            />
+              <select
+                id="subjectInput"
+                className="form-input"
+                onChange={this.onChangeSubject}
+              >
+                {subjectList.map((subject) => {
+                  return (
+                    <option
+                      key={subject.subject_code}
+                      value={subject.subject_code}
+                    >
+                      {subject.subject_name}
+                    </option>
+                  );
+                })}
+              </select>
 
-            <button className="login-btn" type="submit">
-              Generate QR
-            </button>
-          </form>
-        </div>
+              <label className="form-label" htmlFor="hoursTakenInput">
+                TOTAL HOUR
+              </label>
+              <input
+                id="hoursTakenInput"
+                className="form-input"
+                type="number"
+                value={hoursTaken}
+                placeholder="Total hour"
+                onChange={this.onChangeHoursTaken}
+                required
+              />
+
+              <button className="login-btn" type="submit">
+                Generate QR
+              </button>
+            </form>
+          </div>
+        </>
       );
     };
 

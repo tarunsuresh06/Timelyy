@@ -22,3 +22,22 @@
   text-align: center;
   padding: 20px 0;
 }
+
+.pdf-btn {
+  align-self: auto;
+  margin: 20px;
+}
+
+.notes-form-container {
+  background-color: #272727;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding: 0 20px;
+  width: 80%;
+  max-width: 400px;
+}
+.notes-form-container h2 {
+  text-align: center;
+}
