@@ -53,12 +53,6 @@ const Header = (props) => {
         {showStaff ? renderStaffItems() : renderStudentItems()}
 
         <li className="nav-item">
-          <Link className="nav-link" to="/notes">
-            Notes
-          </Link>
-        </li>
-
-        <li className="nav-item">
           <Link className="nav-link" to="/time-table">
             Time Table
           </Link>

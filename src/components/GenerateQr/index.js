@@ -91,7 +91,7 @@ class GenerateQrCode extends Component {
 
   onClickGoBack = () => {
     const { history } = this.props;
-    history.replace("/staff");
+    history.replace("/");
   };
 
   getSubjectData = async () => {

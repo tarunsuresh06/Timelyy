@@ -82,22 +82,6 @@ const Home = () => {
         <div className="home-list-group">
           {showStaffOption && renderStaffListItem()}
           {showStudentOption && renderStudentListItem()}
-          <Link to="/notes" className="home-list-item">
-            <div>
-              <BiNotepad
-                className="home-icon"
-                size={20}
-                style={{ color: "fff" }}
-              />
-              <span className="home-list-text">Notes and PDF</span>
-            </div>
-            <BiRightArrowAlt
-              className="home-icon"
-              size={20}
-              style={{ color: "fff" }}
-            />
-          </Link>
-
           <Link to="/time-table" className="home-list-item">
             <div>
               <BiTimeFive
