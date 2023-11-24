@@ -376,13 +376,16 @@ class Register extends Component {
         <label className="form-label" htmlFor="staffDepartmentInput">
           STAFF DEPARTMENT
         </label>
-        <select id="staffDepartmentInput" className="form-input">
+        <select
+          id="staffDepartmentInput"
+          className="form-input"
+          onChange={this.onChangeStaffDepartment}
+        >
           {departmentList.map((department) => {
             return (
               <option
                 key={department.departmentId}
                 value={department.departmentId}
-                onChange={this.onChangeStaffDepartment}
               >
                 {department.label}
               </option>

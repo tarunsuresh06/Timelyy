@@ -51,6 +51,8 @@ class Login extends Component {
     const response = await fetch(url, options);
     const data = await response.json();
 
+    console.log(data);
+
     if (response.ok) {
       const jwtToken = data.jwtToken;
       this.onSubmitSuccess(jwtToken);
