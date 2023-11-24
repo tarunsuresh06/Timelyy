@@ -5,7 +5,10 @@ const About = () => {
   return (
     <>
       <Header />
-      <div className="about-us-container">
+      <div
+        className="about-us-container"
+        onContextMenu={(e) => e.preventDefault()}
+      >
         <div className="about-main">
           <img
             src="https://res.cloudinary.com/tommy06/image/upload/v1700830367/levxulcxvmb141w1kvsx.png"
@@ -32,7 +35,7 @@ const About = () => {
         <div className="developer-container">
           <div className="developer-profile">
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              src="https://res.cloudinary.com/tommy06/image/upload/v1700850167/zeiejyhcl0fe3vjljbpi.jpg"
               alt="developer-profile"
             />
 
@@ -44,7 +47,7 @@ const About = () => {
 
           <div className="developer-profile">
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              src="https://res.cloudinary.com/tommy06/image/upload/v1700850168/nbsg25za2nhhtkoj6txq.jpg"
               alt="developer-profile"
             />
 

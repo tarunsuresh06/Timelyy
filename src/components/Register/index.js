@@ -313,7 +313,7 @@ class Register extends Component {
         </select>
 
         <label className="form-label" htmlFor="studentPasswordInput">
-          STUDENT PASSWORD
+          STUDENT PASSWORD <span className="error-msg">*min 6 character</span>
         </label>
 
         <input
@@ -394,7 +394,7 @@ class Register extends Component {
         </select>
 
         <label className="form-label" htmlFor="staffPasswordInput">
-          STAFF PASSWORD
+          STAFF PASSWORD <span className="error-msg">*min 6 character</span>
         </label>
 
         <input
