@@ -18,20 +18,18 @@ const About = () => {
           <div>
             <h1>About</h1>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              TIMELYY revolutionizes attendance management with its
+              sophisticated attendance monitor, offering real-time tracking for
+              precise record-keeping. The intuitive timetable feature allows
+              users to create and customize schedules effortlessly. Complemented
+              by a comprehensive calendar, TIMELYY ensures users stay on top of
+              their commitments, making attendance tracking a seamless and
+              organized experience.
             </p>
           </div>
         </div>
 
+        <h1>Developers</h1>
         <div className="developer-container">
           <div className="developer-profile">
             <img
@@ -59,7 +57,7 @@ const About = () => {
 
           <div className="developer-profile">
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              src="https://res.cloudinary.com/tommy06/image/upload/v1700928336/y8vraehuwsy34dj3e1et.jpg"
               alt="developer-profile"
             />
 
@@ -71,7 +69,7 @@ const About = () => {
 
           <div className="developer-profile">
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              src="https://res.cloudinary.com/tommy06/image/upload/v1700928336/zenoujqsl8lbb0xzuqxy.jpg"
               alt="developer-profile"
             />
 
