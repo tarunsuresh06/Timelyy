@@ -94,14 +94,14 @@ const Home = () => {
             />
           </Link>
 
-          <Link to="/calender" className="home-list-item">
+          <Link to="/calendar" className="home-list-item">
             <div>
               <BsFillCalendarCheckFill
                 className="home-icon"
                 size={15}
                 style={{ color: "fff" }}
               />
-              <span className="home-list-text">Calender</span>
+              <span className="home-list-text">Calendar</span>
             </div>
             <BiRightArrowAlt
               className="home-icon"

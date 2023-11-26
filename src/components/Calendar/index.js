@@ -4,7 +4,7 @@ import Header from "../Header";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-class Calender extends Component {
+class Calendar extends Component {
   state = { calender: null, calenderData: null };
 
   componentDidMount() {
@@ -84,19 +84,19 @@ class Calender extends Component {
         <Header />
         <div className="calender-bg-container">
           <div className="time-table-container">
-            <h3>Acadamic Calender</h3>
+            <h3>Acadamic Calendar</h3>
             <button
               onClick={() => this.viewPdf(calenderData.data)}
               className="login-btn"
             >
-              View Calender
+              View Calendar
             </button>
           </div>
           {showUpload && (
             <div className="notes-form-container">
-              <h2>Upload Calender</h2>
+              <h2>Upload Calendar</h2>
               <label className="form-label" htmlFor="chooseImageInput">
-                Choose Calender
+                Choose Calendar
               </label>
               <input
                 id="chooseImageInput"
@@ -116,4 +116,4 @@ class Calender extends Component {
   }
 }
 
-export default Calender;
+export default Calendar;

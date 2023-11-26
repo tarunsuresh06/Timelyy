@@ -8,7 +8,7 @@ import ScanQrCode from "./components/QrScanner";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
-import Calender from "./components/Calender";
+import Calendar from "./components/Calendar";
 import GenerateQrCode from "./components/GenerateQr";
 import notFound from "./components/NotFound";
 import TimeTable from "./components/TimeTable";
@@ -24,7 +24,7 @@ function App() {
         <ProtectedRoute exact path="/attendance" component={Attendance} />
         <ProtectedRoute exact path="/qrcode/scan" component={ScanQrCode} />
         <ProtectedRoute exact path="/admin" component={AdminDashboard} />
-        <ProtectedRoute exact path="/calender" component={Calender} />
+        <ProtectedRoute exact path="/calendar" component={Calendar} />
         <ProtectedRoute exact path="/time-table" component={TimeTable} />
         <ProtectedRoute exact path="/about" component={About} />
         <ProtectedRoute
