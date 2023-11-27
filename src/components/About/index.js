@@ -33,7 +33,7 @@ const About = () => {
         <div className="developer-container">
           <div className="developer-profile">
             <img
-              src="https://res.cloudinary.com/tommy06/image/upload/v1700850167/zeiejyhcl0fe3vjljbpi.jpg"
+              src="https://res.cloudinary.com/tommy06/image/upload/v1701106410/vnjzknir9uiquxy1r926.jpg"
               alt="developer-profile"
             />
 
