@@ -12,7 +12,6 @@ import Calendar from "./components/Calendar";
 import GenerateQrCode from "./components/GenerateQr";
 import notFound from "./components/NotFound";
 import TimeTable from "./components/TimeTable";
-import About from "./components/About";
 
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
         <ProtectedRoute exact path="/admin" component={AdminDashboard} />
         <ProtectedRoute exact path="/calendar" component={Calendar} />
         <ProtectedRoute exact path="/time-table" component={TimeTable} />
-        <ProtectedRoute exact path="/about" component={About} />
         <ProtectedRoute
           exact
           path="/generate-qr-code"
