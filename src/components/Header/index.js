@@ -63,12 +63,6 @@ const Header = (props) => {
             Calendar
           </Link>
         </li>
-
-        <li className="nav-item">
-          <Link className="nav-link" to="/about">
-            About
-          </Link>
-        </li>
       </ul>
 
       <button className="logout-btn" type="button" onClick={onClickLogout}>

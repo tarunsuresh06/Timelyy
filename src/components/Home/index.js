@@ -6,7 +6,6 @@ import {
   BsFillCalendarCheckFill,
 } from "react-icons/bs";
 import { BiQrScan, BiRightArrowAlt, BiTimeFive } from "react-icons/bi";
-import { MdAdminPanelSettings } from "react-icons/md";
 
 import Header from "../Header";
 
@@ -102,22 +101,6 @@ const Home = () => {
                 style={{ color: "fff" }}
               />
               <span className="home-list-text">Calendar</span>
-            </div>
-            <BiRightArrowAlt
-              className="home-icon"
-              size={20}
-              style={{ color: "fff" }}
-            />
-          </Link>
-
-          <Link to="/about" className="home-list-item">
-            <div>
-              <MdAdminPanelSettings
-                className="home-icon"
-                size={20}
-                style={{ color: "fff" }}
-              />
-              <span className="home-list-text">About</span>
             </div>
             <BiRightArrowAlt
               className="home-icon"
